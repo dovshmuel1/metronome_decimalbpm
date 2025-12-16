@@ -27,7 +27,7 @@ class MetronomeWeb extends MetronomePlatform {
   //
   bool _isPlaying = false;
   int _currentTick = 0;
-  int _bpm = 120;
+  double _bpm = 120.0;
   int _timeSignature = 4;
   double _volume = 1.0;
   bool _enableTickCallback = false;
@@ -42,7 +42,7 @@ class MetronomeWeb extends MetronomePlatform {
   Future<void> init(
     String mainPath, {
     String accentedPath = '',
-    int bpm = 120,
+    double bpm = 120.0,
     int volume = 50,
     bool enableTickCallback = false,
     int timeSignature = 4,
@@ -113,7 +113,7 @@ class MetronomeWeb extends MetronomePlatform {
   }
 
   @override
-  Future<int?> getBPM() async {
+  Future<double?> getBPM() async {
     return _bpm;
   }
 
@@ -123,7 +123,7 @@ class MetronomeWeb extends MetronomePlatform {
   }
 
   @override
-  Future<void> setBPM(int bpm) async {
+  Future<void> setBPM(double bpm) async {
     if (bpm != _bpm) {
       _bpm = bpm;
     }

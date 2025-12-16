@@ -31,7 +31,7 @@ abstract class MetronomePlatform extends PlatformInterface {
   Future<void> init(
     String mainPath, {
     String accentedPath = '',
-    int bpm = 120,
+    double bpm = 120,
     int volume = 50,
     bool enableTickCallback = false,
     int timeSignature = 4,
@@ -71,11 +71,11 @@ abstract class MetronomePlatform extends PlatformInterface {
     throw UnimplementedError('setAudioFile() has not been implemented.');
   }
 
-  Future<void> setBPM(int bpm) {
+  Future<void> setBPM(double bpm) {
     throw UnimplementedError('setBPM() has not been implemented.');
   }
 
-  Future<int?> getBPM() {
+  Future<double?> getBPM() {
     throw UnimplementedError('getBPM() has not been implemented.');
   }
 

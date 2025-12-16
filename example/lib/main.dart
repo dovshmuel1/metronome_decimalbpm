@@ -15,7 +15,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   final _metronomePlugin = Metronome();
   bool isplaying = false;
-  int bpm = 120;
+  double bpm = 120.0;
   int vol = 50;
   int timeSignature = 4;
   String metronomeIcon = 'assets/metronome-left.png';
@@ -98,14 +98,14 @@ class _MyAppState extends State<MyApp> {
               ),
               Slider(
                 value: bpm.toDouble(),
-                min: 30,
-                max: 600,
+                min: 4,
+                max: 200,
                 divisions: 570,
                 onChangeEnd: (val) {
                   _metronomePlugin.setBPM(bpm);
                 },
                 onChanged: (val) {
-                  bpm = val.toInt();
+                  bpm = val;
                   currentTick = 0;
                   setState(() {});
                 },

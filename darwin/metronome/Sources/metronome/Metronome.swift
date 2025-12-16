@@ -9,7 +9,7 @@ class Metronome {
     //
     private var audioFileMain: AVAudioFile
     private var audioFileAccented: AVAudioFile
-    public var audioBpm: Int = 120
+    public var audioBpm: Double = 120
     public var audioVolume: Float = 0.5
     public var audioTimeSignature: Int = 0
 
@@ -17,7 +17,7 @@ class Metronome {
     private var timer: DispatchSourceTimer?
     private var startTime: AVAudioTime?
     /// Initialize the metronome with the main and accented audio files.
-    init(mainFileBytes: Data, accentedFileBytes: Data, bpm: Int, timeSignature: Int = 0, volume: Float, sampleRate: Int) {
+    init(mainFileBytes: Data, accentedFileBytes: Data, bpm: Double, timeSignature: Int = 0, volume: Float, sampleRate: Int) {
         self.sampleRate = sampleRate
         audioTimeSignature = timeSignature
         audioBpm = bpm
@@ -265,7 +265,7 @@ class Metronome {
     
     private func startBeatTimer() {
         if self.eventTick == nil {return}
-        let beatDuration = 60.0 / Double(audioBpm)
+        let beatDuration = 60.0 / (audioBpm)
         timer?.cancel()
         timer = DispatchSource.makeTimerSource(queue: DispatchQueue.global(qos: .background))
         timer?.schedule(deadline: .now(), repeating: beatDuration, leeway: .milliseconds(10))

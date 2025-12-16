@@ -21,13 +21,13 @@ class Metronome
 public:
     Metronome(const std::vector<uint8_t> &mainFileBytes,
               const std::vector<uint8_t> &accentedFileBytes,
-              int bpm, int timeSignature, double volume, int sampleRate);
+              double bpm, int timeSignature, double volume, int sampleRate);
     ~Metronome();
 
     void Play();
     void Pause();
     void Stop();
-    void SetBPM(int bpm);
+    void SetBPM(double bpm);
     void SetTimeSignature(int timeSignature);
     void SetVolume(double volume);
     void SetAudioFile(const std::vector<uint8_t> &mainFileBytes, const std::vector<uint8_t> &accentedSound);
@@ -35,7 +35,7 @@ public:
     bool IsPlaying() const;
     void Destroy();
     int Metronome::GetVolume() const;
-    int audioBpm = 120;
+    double audioBpm = 120;
     int audioTimeSignature = 4;
 
 private:

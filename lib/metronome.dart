@@ -33,7 +33,7 @@ class Metronome {
   Future<void> init(
     String mainPath, {
     String accentedPath = '',
-    int bpm = 120,
+    double bpm = 120.0,
     int volume = 50,
     bool enableTickCallback = false,
     int timeSignature = 4,
@@ -96,14 +96,14 @@ class Metronome {
   }
 
   ///set the bpm of the metronome
-  Future<void> setBPM(int bpm) async {
+  Future<void> setBPM(double bpm) async {
     return MetronomePlatform.instance.setBPM(bpm);
   }
 
   ///get the bpm of the metronome
-  Future<int> getBPM() async {
-    int? bpm = await MetronomePlatform.instance.getBPM();
-    return bpm ?? 120;
+  Future<double> getBPM() async {
+    double? bpm = await MetronomePlatform.instance.getBPM();
+    return bpm ?? 120.0;
   }
 
   ///set the time signature of the metronome

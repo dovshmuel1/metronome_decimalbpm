@@ -66,7 +66,7 @@ namespace metronome
       std::vector<uint8_t> mainFileBytes = std::get<std::vector<uint8_t>>(arguments[flutter::EncodableValue("mainFileBytes")]);
       std::vector<uint8_t> accentedFileBytes = std::get<std::vector<uint8_t>>(arguments[flutter::EncodableValue("accentedFileBytes")]);
       int timeSignature = std::get<int>(arguments[flutter::EncodableValue("timeSignature")]);
-      int bpm = std::get<int>(arguments[flutter::EncodableValue("bpm")]);
+      double bpm = std::get<double>(arguments[flutter::EncodableValue("bpm")]);
       double volume = std::get<double>(arguments[flutter::EncodableValue("volume")]);
       int sampleRate = std::get<int>(arguments[flutter::EncodableValue("sampleRate")]);
       bool enableTickCallback = std::get<bool>(arguments[flutter::EncodableValue("enableTickCallback")]);
@@ -96,7 +96,7 @@ namespace metronome
     else if (method == "setBPM")
     {
       auto arguments = std::get<flutter::EncodableMap>(*method_call.arguments());
-      int bpm = std::get<int>(arguments[flutter::EncodableValue("bpm")]);
+      double bpm = std::get<double>(arguments[flutter::EncodableValue("bpm")]);
       metronome->SetBPM(bpm);
       std::cout << "bpm " << bpm << std::endl;
       result->Success(true);

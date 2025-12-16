@@ -29,7 +29,7 @@ class MethodChannelMetronome extends MetronomePlatform {
   Future<void> init(
     String mainPath, {
     String accentedPath = '',
-    int bpm = 120,
+    double bpm = 120.0,
     int volume = 50,
     bool enableTickCallback = false,
     int timeSignature = 4,
@@ -106,7 +106,7 @@ class MethodChannelMetronome extends MetronomePlatform {
   }
 
   @override
-  Future<void> setBPM(int bpm) async {
+  Future<void> setBPM(double bpm) async {
     if (bpm <= 0) {
       throw Exception('BPM must be greater than 0');
     }
@@ -122,9 +122,9 @@ class MethodChannelMetronome extends MetronomePlatform {
   }
 
   @override
-  Future<int?> getBPM() async {
+  Future<double?> getBPM() async {
     try {
-      return await methodChannel.invokeMethod<int>('getBPM');
+      return await methodChannel.invokeMethod<double>('getBPM');
     } catch (e) {
       if (kDebugMode) {
         print(e);
